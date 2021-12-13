@@ -1,0 +1,48 @@
+{
+ "properties": {
+  "displayName": "Append Cost Center Tag: 240674",
+  "policyType": "Custom",
+  "mode": "Indexed",
+  "metadata": {
+   "category": "Tags",
+   "createdBy": "18e0e2b2-44b1-44a0-8054-b855900cb6ab",
+   "createdOn": "2021-12-13T16:29:20.724263Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {
+   "tagName": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag Name",
+     "description": "Name of the tag, such as 'environment'"
+    }
+   },
+   "tagValue": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag Value",
+     "description": "Value of the tag, such as 'production'"
+    }
+   }
+  },
+  "policyRule": {
+   "if": {
+    "field": "[concat('tags[', parameters('tagName'), ']')]",
+    "exists": "false"
+   },
+   "then": {
+    "effect": "append",
+    "details": [
+     {
+      "field": "[concat('tags[', parameters('tagName'), ']')]",
+      "value": "[parameters('tagValue')]"
+     }
+    ]
+   }
+  }
+ },
+ "id": "/subscriptions/5e5eb5c4-875d-4a15-bbf3-2c0b1188ec17/providers/Microsoft.Authorization/policyDefinitions/e15870cf-054c-4e4e-a2a1-5be333795633",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "e15870cf-054c-4e4e-a2a1-5be333795633"
+}
